@@ -1,0 +1,334 @@
+.header {
+  // padding: 1.5rem 0;
+  height: 124px;
+  position: fixed;
+  width: 100%;
+  @include flex(row, center);
+  z-index: 100;
+
+  background: transparent;
+
+  &.active {
+    background: $dark-gray;
+  }
+
+  &__container {
+    margin: auto;
+    @include flex(row, center, space-between);
+    width: 100%;
+
+    @include screen($laptop) {
+      justify-content: flex-end;
+      column-gap: 2rem;
+    }
+  }
+
+  * {
+    color: white;
+    fill: white;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .header__logo {
+    @include flex(column, center);
+
+    @include screen($laptop) {
+      margin-right: auto;
+    }
+
+    &__image {}
+
+    &__slug {
+      width: 100%;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+  }
+
+  .header__info {
+    // position: relative;
+
+    &.active {
+      display: none;
+    }
+
+    &__button {
+      display: none;
+      border: 1px solid white;
+      padding: 0.25rem 0.5rem;
+      cursor: pointer;
+
+      // &:hover {
+      //   .header__info__button__arrow {
+      //     transform: rotate(180deg);
+      //   }
+      // }
+
+      &.active {
+        .header__info__button__arrow {
+          transform: rotate(180deg);
+        }
+
+        .header__info__container {
+          display: flex;
+        }
+
+        // &:hover {
+        //   .header__info__button__arrow {
+        //     transform: rotate(0deg);
+        //   }
+        // }
+      }
+
+      @include screen($laptop) {
+        @include flex(row, center);
+        column-gap: 1rem;
+
+      }
+
+      &__arrow {
+        transition: transform 0.2s ease;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &__container {
+      @include flex(row, center);
+      column-gap: .75rem;
+
+      &.active {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        padding: 40px;
+        width: calc(100% - 80px);
+        border-bottom: 1px solid black;
+
+        @include screen($tablet) {
+          flex-direction: column;
+          align-items: flex-start;
+          column-gap: unset;
+          row-gap: 1.5rem;
+        }
+
+        * {
+          color: black;
+          fill: black;
+          font-weight: 600;
+        }
+      }
+
+      @include screen($laptop) {
+        display: none;
+      }
+    }
+
+    &__element {
+      @include flex(row, center);
+      column-gap: .75rem;
+
+      &__icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      &__container {
+        @include flex(column, flex-start);
+        row-gap: 2px;
+
+        &__text {
+          text-decoration: none;
+          font-size: 13px;
+        }
+
+        a {
+          transition: text-decoration 0.1s ease-in;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        .header__info__element__container {
+          align-items: flex-end;
+        }
+      }
+    }
+  }
+
+  .header__hamburger {
+    .icon {
+      width: 34px;
+      cursor: pointer;
+      fill: white;
+      user-select: none;
+    }
+
+    .hamburger {
+      &.hidden {
+        display: none;
+      }
+    }
+
+    .close {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  .header__navigation {
+    display: none;
+    padding: 20px 0 40px 0;
+    border-bottom: 1px solid white;
+
+    @include screen($laptop) {
+      max-width: 320px;
+      height: calc(100vh - 124px);
+    }
+
+    &.active {
+      display: flex;
+      flex-direction: column;
+
+      row-gap: 2.5rem;
+
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: $dark-gray;
+
+      @include screen($laptop) {
+        row-gap: 1.5rem;
+      }
+
+      .header__navigation__container {
+        margin: auto;
+
+        @include screen($laptop) {
+          margin: 0;
+        }
+      }
+    }
+
+    &__container {
+      @include flex(row, flex-start, space-between);
+
+      column-gap: 2rem;
+      width: 100%;
+
+      @include screen($laptop) {
+        @include flex(column, flex-start);
+        width: auto;
+      }
+    }
+
+    &__element {
+      @include flex(column, flex-start);
+      row-gap: 1.875rem;
+
+      @include screen($laptop) {
+        width: 100%;
+      }
+    }
+
+    &__title {
+      text-transform: uppercase;
+      font-size: 1.375rem;
+      font-weight: 600;
+      position: relative;
+
+      @include screen($laptop) {
+        cursor: pointer;
+        font-size: 1.125rem;
+        width: 100%;
+      }
+
+      &::after {
+        @include pseudo;
+
+        width: 100%;
+        height: 1px;
+        top: calc(100% + 10px);
+        left: 0;
+        background: white;
+
+        @include screen($laptop) {
+          content: '';
+        }
+      }
+    }
+
+    &__list {
+      @include list;
+
+      @include screen($laptop) {
+        display: none;
+      }
+
+      &.active {
+        @include screen($laptop) {
+          display: block;
+        }
+      }
+
+      &__element {
+        margin-bottom: 1rem;
+
+        &:hover a {
+          color: $red;
+        }
+
+        &__link {
+          text-transform: none;
+          text-decoration: none;
+          font-size: 1rem;
+          font-weight: 400;
+        }
+      }
+    }
+
+    &__platform {
+      @include flex(row, center);
+      column-gap: .5rem;
+      position: relative;
+
+      &::before {
+        @include pseudo;
+        width: calc(100% * 2);
+        height: 1px;
+        background: white;
+        bottom: calc(100% + 20px);
+        left: 0;
+
+        @include screen($laptop) {
+          content: unset;
+        }
+      }
+
+      &__icon {
+        rect {
+          fill: transparent;
+        }
+      }
+
+      &__link {
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+      }
+    }
+  }
+}

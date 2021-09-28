@@ -1,0 +1,109 @@
+// BREAKPOINTS - MEDIA QUERIES
+
+@mixin screen($max-width, $min-width: 0) {
+
+  @if $min-width !=0 and $max-width !=0 {
+    @media screen and (min-width: $min-width+'px') and (max-width: $max-width+'px') {
+      @content;
+    }
+  }
+
+  @else if $min-width !=0 {
+    @media screen and (min-width: $min-width+'px') {
+      @content;
+    }
+  }
+
+  @else if $max-width !=0 {
+    @media screen and (max-width: $max-width+'px') {
+      @content;
+    }
+  }
+}
+
+// FORCE CENTER
+
+@mixin center($type: absolute, $value: full) {
+  @if $type==absolute {
+    position: absolute;
+
+    @if $value==horizontal {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @else if $value==vertical {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @else if $value==full {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @else if $type==push {
+    @if $value==horizontal {
+      margin: {
+        left: auto;
+        right: auto;
+      }
+    }
+
+    @else if $value==vertical {
+      margin: {
+        top: auto;
+        bottom: auto;
+      }
+    }
+
+    @else if $value==full {
+      margin: auto;
+    }
+  }
+}
+
+// LIST RESETTING
+
+@mixin list($value: reset) {
+  @if $value==reset {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+// PSEUDO ELEMENT - BASIC SETUP
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+// GRID
+
+@mixin grid($columns, $rows, $gap: 0, $align: flex-start, $justify: $align) {
+  display: grid;
+
+  grid-template-columns: repeat($columns, 1fr);
+  grid-template-rows: repeat($rows, 1fr);
+  column-gap: $gap;
+  row-gap: $gap;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+// FLEX
+
+@mixin flex($direction, $align, $justify: $align, $column-gap: unset, $row-gap: $column-gap) {
+  display: flex;
+
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  column-gap: $column-gap;
+  row-gap: $row-gap;
+}

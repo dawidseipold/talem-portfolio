@@ -1,0 +1,21 @@
+.wrapper {
+  max-width: 1140px;
+  margin: auto;
+
+  @include screen($desktop) {
+    max-width: 960px;
+  }
+
+  @include screen($laptop) {
+    max-width: 720px;
+  }
+
+  @include screen($tablet) {
+    max-width: 540px;
+  }
+
+  @include screen($phone) {
+    max-width: 420px;
+    padding: 0 20px;
+  }
+}
