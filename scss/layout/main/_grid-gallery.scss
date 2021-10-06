@@ -21,11 +21,11 @@
     position: relative;
 
     &:hover {
-      .grid-gallery__element__image {
+      .grid-gallery__elementt__image {
         filter: brightness(0.2);
       }
 
-      .grid-gallery__element__content {
+      .grid-gallery__elementt__content {
         opacity: 1;
       }
     }
