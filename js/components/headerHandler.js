@@ -11,6 +11,7 @@ const infoButton = document.querySelector('.header__info__button');
 const infoContainer = document.querySelector('.header__info__container');
 
 const header = document.querySelector('header');
+const main = document.querySelector('main');
 
 function replaceIcon() {
   hamburger.classList.toggle('hidden');
@@ -20,6 +21,7 @@ function replaceIcon() {
 function revealMenu() {
   menu.classList.toggle('active');
   info.classList.toggle('active');
+  main.classList.toggle('blurred');
 }
 
 function changeColors() {
@@ -42,6 +44,14 @@ function removeClassOnResize() {
   }
 }
 
+function headerScrollDown() {
+  if (window.pageYOffset > 1) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+}
+
 hamburger.addEventListener('click', () => {
   replaceIcon();
   revealMenu();
@@ -58,8 +68,20 @@ infoButton.addEventListener('click', () => {
   revealInfo();
 });
 
+window.addEventListener('click', (e) => {
+  if (!header.contains(e.target) && close.classList.contains('active')) {
+    replaceIcon();
+    revealMenu();
+    changeColors();
+  }
+});
+
 window.addEventListener('resize', () => {
   removeClassOnResize();
+});
+
+window.addEventListener('scroll', () => {
+  headerScrollDown();
 });
 
 menuTitle.forEach((title) => {

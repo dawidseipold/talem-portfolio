@@ -1,4 +1,9 @@
 .main {
   width: 100%;
   height: auto;
+
+  &.blurred {
+    filter: blur(3px);
+    user-select: none;
+  }
 }

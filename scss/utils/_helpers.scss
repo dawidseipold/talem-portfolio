@@ -1,6 +1,7 @@
 .wrapper {
   max-width: 1140px;
   margin: auto;
+  padding: 0 20px;
 
   @include screen($desktop) {
     max-width: 960px;
@@ -16,6 +17,11 @@
 
   @include screen($phone) {
     max-width: 420px;
-    padding: 0 20px;
   }
+}
+
+.reveal {
+  position: relative;
+  opacity: 0;
+  transition: all 0.2s ease;
 }

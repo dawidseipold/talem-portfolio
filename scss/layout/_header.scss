@@ -5,11 +5,40 @@
   width: 100%;
   @include flex(row, center);
   z-index: 100;
+  transition: height 0.3s ease;
 
   background: transparent;
 
+  &.scrolled {
+    background: white;
+    height: 96px;
+
+    &:not(.active) {
+      * {
+        color: black;
+        fill: black;
+      }
+
+      .header__logo__image {
+        &--white {
+          display: none;
+        }
+
+        &--normal {
+          display: block;
+        }
+    }
+    }
+  }
+
   &.active {
     background: $dark-gray;
+
+    @include screen($laptop) {
+      .wrapper {
+        max-width: unset;
+      }
+    }
   }
 
   &__container {
@@ -36,7 +65,11 @@
       margin-right: auto;
     }
 
-    &__image {}
+    &__image {
+      &--normal {
+        display: none;
+      }
+    }
 
     &__slug {
       width: 100%;
@@ -218,6 +251,7 @@
 
         @include screen($laptop) {
           margin: 0;
+          padding: 0 20px;
         }
       }
     }

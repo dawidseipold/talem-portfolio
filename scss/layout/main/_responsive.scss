@@ -8,11 +8,16 @@
   }
 
   &__text {
+    width: 100%;
+
     &__title {
       font-size: 3rem;
       text-transform: uppercase;
+      @include flex(row, flex-start);
+      column-gap: 1rem;
 
       span {
+        display: block;
         color: $main;
       }
     }
@@ -85,11 +90,11 @@
         }
 
         &::before {
-          background: red;
+          background: $main;
         }
 
         &::after {
-          background: blue;
+          background: white;
         }
 
         &.image-1 {
