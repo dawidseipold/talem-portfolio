@@ -13,6 +13,7 @@ Use a better box model (opinionated).
 ::before,
 ::after {
 	box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /**
@@ -27,11 +28,15 @@ html {
 /**
 1. Correct the line height in all browsers.
 2. Prevent adjustments of font size after orientation changes in iOS.
+3. Smoothen scroll behavior.
+4. Create anchor scroll padding.
 */
 
 html {
 	line-height: 1.15; /* 1 */
 	-webkit-text-size-adjust: 100%; /* 2 */
+  scroll-behavior: smooth; /* 3 */
+  scroll-padding-top: 96px; /* 4 */
 }
 
 /*

@@ -1,0 +1,54 @@
+.wide-blocks {
+  width: 100%;
+  height: auto;
+
+  @include flex(column, center);
+
+  &__block {
+    width: 100%;
+    height: 100vh;
+
+    @include flex(row, center);
+
+    &:nth-child(2n) {
+      flex-direction: row-reverse;
+
+      .wide-blocks__block--text {
+        background: $main;
+
+      }
+    }
+
+    &--text {
+      @include flex(column, flex-start, center);
+      width: 50%;
+      height: 100%;
+      background: $dark-gray;
+      color: white;
+      padding: clamp(1rem, 5vw, 5rem);
+
+      &__subtitle {
+        font-size: clamp(0.75rem, 5vw, 1.5rem);
+        margin: 0;
+        font-weight: 600;
+      }
+
+      &__title {
+        font-size: clamp(1rem, 5vw, 6rem);
+        margin: 0;
+        text-transform: lowercase;
+      }
+    }
+
+    &--image {
+      width: 50%;
+      height: 100%;
+
+      &__image {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

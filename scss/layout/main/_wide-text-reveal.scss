@@ -32,4 +32,23 @@
       text-shadow: 0px 0px 30px lighten($main, 20%);
     }
   }
+
+  &__footer {
+    height: 100vh;
+    @include flex(column, center);
+
+    &__span {
+      font-size: 2rem;
+      text-transform: capitalize;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    &__title {
+      font-size: 6rem;
+      text-transform: uppercase;
+      margin: 0;
+      text-align: center;
+    }
+  }
 }

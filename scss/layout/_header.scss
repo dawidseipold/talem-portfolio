@@ -5,7 +5,7 @@
   width: 100%;
   @include flex(row, center);
   z-index: 100;
-  transition: height 0.3s ease;
+  transition: height 0.3s ease, background 0.3s ease;
 
   background: transparent;
 
@@ -33,6 +33,7 @@
 
   &.active {
     background: $dark-gray;
+    transition: background 0s;
 
     @include screen($laptop) {
       .wrapper {

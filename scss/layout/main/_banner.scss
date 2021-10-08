@@ -1,0 +1,32 @@
+.banner {
+  margin: 4rem 0;
+
+  &__container {
+    height: 50vh;
+    background: $main;
+    border-radius: 15px;
+    position: relative;
+
+    &::before {
+      @include pseudo;
+
+      content: 'Talem';
+      color: white;
+      opacity: 0.04;
+      font-size: clamp(8rem, 20vw, 24rem);
+      font-weight: 600;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__left {
+
+  }
+
+  &__right {
+
+  }
+}
